@@ -14,4 +14,5 @@ Start Date: 25 November 2022
 
 Potential ideas:
 - Minecraft 'Build & Cross' game w/ bot
+- Build & Cross made with Impact.js
 - etc.
