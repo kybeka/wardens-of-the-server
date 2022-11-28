@@ -1,8 +1,8 @@
 # wardens-of-the-server
 
-Software Atelier 3, 2022-23
+__Software Atelier 3, 2022-23__
 
-Team members (so far):
+__Team members (so far):__
 1. Kyla Kaplan
 2. Delara Lomen
 3.
@@ -10,9 +10,15 @@ Team members (so far):
 5.
 6. 
 
-Start Date: 25 November 2022
+__Project:__
+Minecraft 'Build & Cross' game w/ bot
 
-Potential ideas:
-- Minecraft 'Build & Cross' game w/ bot
-- Build & Cross made with Impact.js
-- etc.
+__Libaries being used:__
+Mineflayer + etc.
+
+
+__Timeline__
+| Date        | Deadline    | TODO          |
+| :---        |    :----:   |          ---: |
+| 25 Nov      | Start       | TODO          |
+| 02 Dec      | Milestone 1 | TODO          |
