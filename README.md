@@ -5,10 +5,10 @@ __Software Atelier 3, 2022-23__
 __Team members (so far):__
 1. Kyla Kaplan
 2. Delara Lomen
-3.
+3. Leonardo Cino
 4.
 5.
-6. 
+6.
 
 __Project:__
 Minecraft 'Build & Cross' game w/ bot
