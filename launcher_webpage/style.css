@@ -1,0 +1,423 @@
+/*
+ * HTML5 and CSS1
+ *
+ * CSS Styles
+ *
+ * Include this stylesheet in all pages of your website
+ *
+ * Author: Delara Lomen
+ *
+ */
+
+/*
+Template v83 21/09/2022, 11:45:55
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500&display=swap");
+
+body {
+    font-family: 'Chakra Petch',"Courier New", Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+header, footer, .content-nav, .content-sidebar{
+    text-align: center;
+    color: #f2e8cfff;
+}
+
+header {
+    background: #ac3335;
+    color: #231306;
+    font-size: xx-large;
+    border: 5px solid #2e1a08;
+}
+main {
+    padding: 2%;
+    background: #6a994eff;
+    font-size: x-large;
+    color: #2e1a08;
+    border-bottom: 5px solid #2e1a08;
+}
+
+main div{
+    padding-bottom: 2%;
+}
+
+footer {
+    background: #ac3335;
+}
+.content-nav, .content-sidebar{
+    background: #386641ff;
+}
+
+footer, .content-nav, .content-sidebar {
+    border-left: 5px solid #2e1a08;
+    border-right: 5px solid #2e1a08;
+    border-bottom: 5px solid #2e1a08;
+}
+
+
+nav ul{
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li{
+    font-size: large;
+}
+
+nav a {
+    transition: all 0.25s;
+    text-decoration: none;
+    color: #f2e8cfff;
+}
+
+nav a:hover {
+    border-radius: 25px;
+    background: #ac3335;
+    padding: 10px;
+}
+
+nav a:visited {
+    color: #f2e8cfff;
+}
+
+nav ul .current-page {
+    font-weight: bold;
+    text-decoration: overline;
+}
+
+img, input, button, nav a:hover, textarea, #slider input::-webkit-slider-thumb {
+    border-radius: 25px;
+    border: 6px solid #2e1a08;
+    font-family: 'Chakra Petch',"Courier New", Arial, Helvetica, sans-serif;
+}
+
+.img-descr{
+    position: relative;
+}
+
+.img-txt {
+    position: relative;
+    text-decoration: underline;
+}
+
+
+.play-header, .play-footer{
+    all: unset;
+}
+
+#start-game, #checkbox, #slider {
+    display: flex;
+    gap: 30px;
+}
+
+#checkbox, #slider, #submit-form {
+    padding-left: 9%;
+}
+
+input[type="checkbox"]:not(checked) {
+    border-radius: 0%;
+    appearance:none;
+    -webkit-appearance:none;
+    width: 17px;
+    height: 17px;
+    cursor:pointer;
+    position: relative;
+    top: 5px;
+    background-color:#f2e8cfff;
+}
+
+input[type="checkbox"]:checked {
+    appearance:none;
+    -webkit-appearance:none;
+    cursor:pointer;
+    position: relative;
+    border-radius: 50%;
+    background-color:#dfa81c;
+}
+
+
+
+#other-games-link {
+    color:#231306;
+    text-decoration: none;
+}
+
+
+button:focus{
+    background-color: #ac3335;
+    color: #f2e8cfff;
+    
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+input, button , textarea{
+    background-color: #f2e8cfff;
+    padding: 10px;
+    outline: none;
+}
+
+
+#slider input{
+    background-color: none;
+    padding:0;
+    -webkit-appearance: none;
+    width: 25%;
+    height: 15%;
+}
+
+#slider input::-webkit-slider-thumb{
+    -webkit-appearance:none;
+    cursor:pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color:#dfa81c;
+    outline: none;
+}
+
+
+a {
+    color: #f2e8cfff;
+}
+
+h4{
+    text-decoration: underline;
+}
+
+
+.content-sidebar table th, .content-sidebar table td{
+    color: #f2e8cfff;
+}
+
+
+
+.form-item {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    margin: 10px;
+    padding-left: 8%;
+    
+}
+
+.form-item label{
+    width:50%;
+    display:inline-block;
+    box-sizing:border-box;
+    text-align:left;
+}
+  
+.form-item select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: antiquewhite;
+    text-align:left;
+    padding-left:10px;
+    width:40%;
+    display:inline-block;
+    box-sizing:border-box;
+    border-radius: 25px;
+    border: 6px solid #2e1a08;
+    font-family: 'Chakra Petch',"Courier New", Arial, Helvetica, sans-serif;
+    outline: none;
+}
+ 
+.body .body-content .game-table article{
+    cursor: pointer;
+}
+
+.body .body-content .game-table article button{
+    display: none;
+}
+
+.game_table{
+    display: grid;
+}
+
+.game_table header{
+    margin-top: -1%;
+    margin-left: 5%;
+    margin-right: 27%;
+    width: 68%;
+    height: 95%;
+    text-align: left;
+    display: grid;
+    grid-template-columns: 2% 13% 15% 25% 17% 10% 9% 0%;
+}
+.game_table header{
+    font-size: large;
+}
+
+.game_table .game{
+    font-size: medium;
+}
+
+
+.body-content main{
+    border-radius: 0%;
+}
+
+
+@media (max-width: 768px) {
+    .body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+    }
+     
+    .content-nav, .content-sidebar {
+        flex: 0 15% 0;
+        padding: 2%;
+    }
+          
+    .content-nav {
+        order: -2;
+    }
+    
+    .body-content {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .content-main {
+        flex: 1;
+    }
+    
+    nav ul li{
+        margin-bottom: 8%;
+    }
+
+    main{
+        border-left: 6px solid #2e1a08;
+        border-right: 6px solid #2e1a08;
+    }
+    .content-sidebar table{
+        width:45%;
+        margin-left:27.5%; 
+        margin-right:27.5%;
+    }
+    .form-item label{
+        padding-right: 50%;
+    }
+
+    .body-content .game canvas{
+        width: 100%;
+    }
+
+
+    .game_table header{
+        opacity: 0;
+    }
+
+    .game_table .game{
+        margin-left: 40%;
+        margin-right: 40%;
+        display: grid;
+        align-items: center;
+        gap: 1%;
+        padding-bottom: 15%;
+    }
+    
+    .game_table .game span{
+        font-size: medium;
+        display: flex;
+    }
+
+    .game button[data-action="fav"], .game button[data-action="clone"]{
+        display: none;
+    }
+
+    .body-content .actions button{
+        font-size: xxx-large;
+        width: 5em;
+        height: 5em;
+    }
+
+    th{
+        text-align: left;
+    }
+
+}
+
+
+@media (min-width: 768px) {
+    main{
+        width: 70%;
+    }
+    .body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+    }
+      
+    .body-content {
+        display: flex;
+        flex: 1;
+    }
+
+    .content-main {
+        flex: 1;
+    }
+      
+    .content-nav, .content-sidebar {
+        flex: 0 0 15%;
+        padding: 0.75%;
+    }
+      
+    .content-nav {
+        /* put the nav on the left */
+        order: -1;
+    }
+
+    #main-game-nav, #main-game-sidebar{
+        flex: 0 0 12.68%;
+        padding: 0%;
+    }
+
+
+    nav ul li{
+        margin-bottom: 10%;
+    }
+
+        
+    .game_table{
+        display: grid;
+        grid-row: 70px;
+        grid-column: 80px;
+    }
+
+
+    #show-games {
+        display: flex;
+        gap: 10%;
+    }
+
+    .input-name{
+        padding-top: 15%;
+    }
+    
+    .form-item label{
+        padding-right: 10%;
+    }
+
+    .content-sidebar table{
+        padding-left: 8%;
+    }
+
+    .game button[data-action]:not(button[data-action=start]){
+        opacity: 0;
+    }
+
+    .game:hover button[data-action]:not(button[data-action=start]) {
+        opacity:1;
+    }
+
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="author" content="Kyla Kaplan">
+    <meta name="author" content="Delara Lomen">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css">
+    <title>Build & Cross</title>
+</head>
+
+<body class="body" onload="setMain('home')">
+    <header>
+        <h1>Build & Cross</h1>
+    </header>
+    <div class="body-content">
+        <main class="content-main">
+        </main>
+        <aside class="content-sidebar">
+            <!-- player highscores will be displayed here -->
+            <h4>Top 10 Players</h4>
+            <table>
+                <tr>
+                    <th>Player</th>
+                    <th>Score</th>
+                </tr>
+                <tr>
+                    <td>thebestgamer</td>
+                    <td>600000</td>
+                </tr>
+                </tr>
+                <tr>
+                    <td>user048</td>
+                    <td>400000</td>
+                </tr>
+                <tr>
+                    <td>smiley11</td>
+                    <td>300000</td>
+                </tr>
+                <tr>
+                    <td>hackerio</td>
+                    <td>200000</td>
+                </tr>
+                <tr>
+                    <td>user93123</td>
+                    <td>100000</td>
+                </tr>
+            </table>
+        </aside>
+        <nav class="content-nav">
+            <ul>
+                <li id="home" class="current-page"><a onclick="setMain('home')">Homepage</a></li>
+                <li id="customize"><a onclick="setMain('customize')">Customize</a></li>
+                <!-- <li><input type="submit" value="Start the Game!"></li> -->
+            </ul>
+        </nav>
+
+    </div>
+    <footer class="footer"> © Build & Cross, 2022 </footer>
+    <script src="./index.js"></script>
+</body>
+
+</html>
