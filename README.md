@@ -8,7 +8,7 @@ __Team members (so far):__
 3.
 4.
 5.
-6.
+6. 
 
 __Project:__
 Minecraft 'Build & Cross' game w/ bot
@@ -22,3 +22,18 @@ __Timeline__
 | :---        |    :----:   |          ---: |
 | 25 Nov      | Start       | TODO          |
 | 02 Dec      | Milestone 1 | TODO          |
+
+________________________________________________________
+
+__Seed we are working with:__
+__1626615012__
+
+__Useful commands__
+
+1. To kill all entities except players:
+    __/kill @e[type=!player]__
+2. Daytime all the time:
+    __/gamerule doDaylightCycle false__
+3. Turn off mob spawning:
+    __/gamerule doMobSpawning false__
+4. 
