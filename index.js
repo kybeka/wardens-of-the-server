@@ -1,8 +1,9 @@
 const mineflayer = require('mineflayer');
+const portNum = 37571;
 
 const bot = mineflayer.createBot({
     host: 'localhost',
-    port: 40809, //DON'T FORGET TO CHANGE THE PORT
+    port: portNum, //DON'T FORGET TO CHANGE THE PORT
     username: 'looking_bot'
 });
 
@@ -20,13 +21,13 @@ bot.on('physicTick', lookAtNearestPlayer);
 
 //____________________________________________________//
 
-const { pathfinder } = require('mineflayer-pathfinder');
+// const { pathfinder } = require('mineflayer-pathfinder');
 
 
-const bot2 = mineflayer.createBot({
-    host: 'localhost',
-    port: 40809,
-    username: 'pathfinding_bot'
-});
+// const bot2 = mineflayer.createBot({
+//     host: 'localhost',
+//     port: portNum,
+//     username: 'pathfinding_bot'
+// });
 
 
