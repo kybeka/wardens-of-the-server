@@ -16,12 +16,12 @@
     </header>
     <div class="body-content">
         <main class="content-main">
-            <% if (locals.current=="homepage") {%>
-                <%- include("includes/homepage_main")%>
-            <% } else { %>
+            <% if (locals.current=="customize") {%>
                 <%- include("includes/customize_main")%>
+            <% } else { %>
+                <%- include("includes/homepage_main")%>
             <% } %>
-                <%- include("includes/start-button")%>
+                <%- include("includes/launcher")%>
         </main>
         <aside class="content-sidebar">
             <!-- player highscores will be displayed here -->
@@ -62,7 +62,6 @@
                         href="http://localhost:8888/customize">Customize</a></li>
             </ul>
         </nav>
-
     </div>
     <footer class="footer"> © Build & Cross, 2022 </footer>
 </body>
