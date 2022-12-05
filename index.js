@@ -1,9 +1,18 @@
-import { readFile } from 'fs/promises';
+// import { readFile } from 'fs/promises';
 
+// var { readFile } = require('fs/promises');
 
-const colors = require('colors');
+// const colors = require('colors');
+
+const fs = require('fs');
 const mineflayer = require('mineflayer');
 // const { mineflayer: mineflayerViewer } = require('prismarine-viewer');
+
+let botArgs = {
+    host: '51.210.154.234',
+    port: '25604',
+    version: '1.19.2'
+}
 
 
 class MCBot {
@@ -43,16 +52,27 @@ class MCBot {
 
 
 
-const ACCOUNT = JSON.parse(
-    await readFile(
-        new URL('./ACCOUNT.json', import.meta.url)
-    )
-);
+// const ACCOUNT = JSON.parse(
+//     await readFile(
+//         new URL('./ACCOUNT.json', import.meta.url)
+//     )
+// );
+
+
+
+const ACCOUNT = function() {
+    console.log("yoohoo");
+    return JSON.parse(
+        fs.readFileSync('./acc.json', (err, data) => {
+        console.log("dammm");
+        console.log(data);
+    }))
+}
 
 let bots = [];
 let botNames = [];
-for(const ACC of ACCOUNT) {
-    let newBot = newMCBot(ACC.username, ACC.password, ACC.auth)
+for(const ACC of ACCOUNT()) {
+    let newBot = new MCBot(ACC.username, ACC.password, ACC.auth)
     bots.push(newBot);
 }
 
@@ -62,39 +82,23 @@ for(const ACC of ACCOUNT) {
 
 
 
+// const portNum = 33007;  //DON'T FORGET TO CHANGE THE PORT NUMBER
 
+// const bot = mineflayer.createBot({
+//     host: 'localhost',
+//     port: portNum,
+//     username: 'looking_bot'
+// });
 
+// function lookAtNearestPlayer () {
+//     const playerFilter = (entity) => entity.type === 'player'
+//     const playerEntity = bot.nearestEntity(playerFilter);
+//     if (!playerEntity) return;
+//     const pos = playerEntity.position.offset(0, playerEntity.height, 0);
+//     bot.lookAt(pos);
+// }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-const portNum = 33007;  //DON'T FORGET TO CHANGE THE PORT NUMBER
-
-const bot = mineflayer.createBot({
-    host: 'localhost',
-    port: portNum,
-    username: 'looking_bot'
-});
-
-function lookAtNearestPlayer () {
-    const playerFilter = (entity) => entity.type === 'player'
-    const playerEntity = bot.nearestEntity(playerFilter);
-    if (!playerEntity) return;
-    const pos = playerEntity.position.offset(0, playerEntity.height, 0);
-    bot.lookAt(pos);
-}
-
-bot.on('physicTick', lookAtNearestPlayer);
+// bot.on('physicTick', lookAtNearestPlayer);
 
 // async function digResource() {
 //     let blockPosition = bot.entity.position.offset(0,-1,0);
