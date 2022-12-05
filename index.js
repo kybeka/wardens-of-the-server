@@ -1,9 +1,9 @@
 const mineflayer = require('mineflayer');
-const portNum = 37571;
+const portNum = 37571;  //DON'T FORGET TO CHANGE THE PORT NUMBER
 
 const bot = mineflayer.createBot({
     host: 'localhost',
-    port: portNum, //DON'T FORGET TO CHANGE THE PORT
+    port: portNum,
     username: 'looking_bot'
 });
 

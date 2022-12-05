@@ -6,16 +6,22 @@
     <meta name="author" content="Kyla Kaplan">
     <meta name="author" content="Delara Lomen">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Build & Cross</title>
 </head>
 
-<body class="body" onload="setMain('home')">
+<body class="body">
     <header>
         <h1>Build & Cross</h1>
     </header>
     <div class="body-content">
         <main class="content-main">
+            <% if (locals.current=="homepage") {%>
+                <%- include("includes/homepage_main")%>
+            <% } else { %>
+                <%- include("includes/customize_main")%>
+            <% } %>
+                <%- include("includes/start-button")%>
         </main>
         <aside class="content-sidebar">
             <!-- player highscores will be displayed here -->
@@ -50,15 +56,15 @@
         </aside>
         <nav class="content-nav">
             <ul>
-                <li id="home" class="current-page"><a onclick="setMain('home')">Homepage</a></li>
-                <li id="customize"><a onclick="setMain('customize')">Customize</a></li>
-                <!-- <li><input type="submit" value="Start the Game!"></li> -->
+                <li id="home" <li class="<%= locals.current == "homepage" ? "current-page" : "" %>"><a
+                        href="http://localhost:8888/homepage">Homepage</a></li>
+                <li id="customize" <li class="<%= locals.current == "customize" ? "current-page" : "" %>"><a
+                        href="http://localhost:8888/customize">Customize</a></li>
             </ul>
         </nav>
 
     </div>
     <footer class="footer"> © Build & Cross, 2022 </footer>
-    <script src="./index.js"></script>
 </body>
 
 </html>
