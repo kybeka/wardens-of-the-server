@@ -6,7 +6,7 @@ __Team members (so far):__
 1. Kyla Kaplan
 2. Delara Lomen
 3. Sapana Tamang
-4.
+4. Sara Liberi
 5.
 6.
 
