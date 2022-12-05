@@ -8,7 +8,7 @@ var path = require('path')
 // renders ejs
 app.set("view engine", "ejs");
 
-// make express search for all webpage assets in the public folder
+// makes express search for all webpage assets in the public folder
 app.use(express.static(path.join(__dirname, 'public'), {homepage: "homepage.ejs"}));
 
 app.get("/", function(req,res) {

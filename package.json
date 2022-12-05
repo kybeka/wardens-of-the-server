@@ -93,7 +93,7 @@
     "yggdrasil": "^1.7.0"
   },
   "scripts": {
-    "startserver": "nodemon app.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -104,8 +104,5 @@
   "bugs": {
     "url": "https://github.com/kybeka/wardens-of-the-server/issues"
   },
-  "homepage": "https://github.com/kybeka/wardens-of-the-server#readme",
-  "devDependencies": {
-    "nodemon": "^2.0.20"
-  }
+  "homepage": "https://github.com/kybeka/wardens-of-the-server#readme"
 }
