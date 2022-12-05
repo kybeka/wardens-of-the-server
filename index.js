@@ -1,4 +1,83 @@
+import { readFile } from 'fs/promises';
+
+
+const colors = require('colors');
 const mineflayer = require('mineflayer');
+// const { mineflayer: mineflayerViewer } = require('prismarine-viewer');
+
+
+class MCBot {
+    // Constructor
+    constructor(username, password, auth) {
+        this.username = username;
+        this.password = password;
+        this.auth = auth;
+        this.host = botArgs["host"];
+        this.port = botArgs["port"];
+        this.version = botArgs["version"];
+        
+        // Initialize the bot
+        this.initBot();
+    } 
+
+    // Init bot instance
+    initBot() {
+        this.bot = mineflayer.createBot({
+            "username": this.username,
+            "password": this.password,
+            "auth": this.auth,
+            "host": this.host,
+            "port": this.port,
+            "version": this.version
+
+        });
+
+        //Add to list
+        botNames.push(this.bot.username);
+
+        //Initialize bot events
+        // this.initEvents();
+    }
+
+}
+
+
+
+const ACCOUNT = JSON.parse(
+    await readFile(
+        new URL('./ACCOUNT.json', import.meta.url)
+    )
+);
+
+let bots = [];
+let botNames = [];
+for(const ACC of ACCOUNT) {
+    let newBot = newMCBot(ACC.username, ACC.password, ACC.auth)
+    bots.push(newBot);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const portNum = 33007;  //DON'T FORGET TO CHANGE THE PORT NUMBER
 
 const bot = mineflayer.createBot({
