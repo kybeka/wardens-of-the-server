@@ -76,6 +76,7 @@
     "readable-stream": "^4.2.0",
     "ret": "^0.1.15",
     "safe-buffer": "^5.1.2",
+    "safer-buffer": "^2.1.2",
     "semver": "^5.7.1",
     "smart-buffer": "^4.2.0",
     "sprintf-js": "^1.1.2",
