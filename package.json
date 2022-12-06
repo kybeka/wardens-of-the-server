@@ -47,6 +47,7 @@
     "minecraft-folder-path": "^1.2.0",
     "minecraft-protocol": "^1.36.1",
     "mineflayer": "^4.5.1",
+    "mineflayer-collectblock": "^1.4.1",
     "mineflayer-pathfinder": "^2.4.1",
     "mojangson": "^2.0.2",
     "moo": "^0.5.2",
