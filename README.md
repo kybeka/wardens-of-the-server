@@ -7,7 +7,7 @@ __Team members (so far):__
 2. Delara Lomen
 3. Sapana Tamang
 4. Sara Liberi
-5.
+5. Alessandro Zanzi
 6.
 
 __Project:__
