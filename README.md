@@ -9,7 +9,6 @@ __Team members:__
 3. Sapana Tamang
 4. Sara Liberi
 5. Alessandro Zanzi
-6.
 
 ______________________________________________________
 
@@ -31,7 +30,7 @@ __Libaries being used:__
 __Timeline__
 | Date        | Deadline    | TODO          |
 | :---        |    :----:   |          ---: |
-| 25 Nov      | Start       | DONe          |
+| 25 Nov      | Start       | DONE          |
 | 02 Dec      | Milestone 1 | DONE          |
 | 06 Dec      | 5/5 Members | DONE          |
 | 09 Dec      | Milestone 2 | TODO          |
