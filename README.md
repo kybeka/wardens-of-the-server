@@ -1,8 +1,9 @@
 # wardens-of-the-server
 
 __Software Atelier 3, 2022-23__
+__Minecraft Build & Cross__
 
-__Team members (so far):__
+__Team members:__
 1. Kyla Kaplan
 2. Delara Lomen
 3. Sapana Tamang
@@ -22,19 +23,23 @@ __Project:__
 Minecraft 'Build & Cross' game w/ bot
 
 __Libaries being used:__
-Mineflayer + etc.
+- Mineflayer
+- SQL
+- NodeQuery
 
 
 __Timeline__
 | Date        | Deadline    | TODO          |
 | :---        |    :----:   |          ---: |
-| 25 Nov      | Start       | TODO          |
-| 02 Dec      | Milestone 1 | TODO          |
+| 25 Nov      | Start       | DONe          |
+| 02 Dec      | Milestone 1 | DONE          |
+| 06 Dec      | 5/5 Members | DONE          |
+| 09 Dec      | Milestone 2 | TODO          |
 
 ________________________________________________________
 
-__Seed we are working with:__
-__1626615012__
+<!-- __Seed we are working with:__
+__1626615012__ -->
 
 __Useful commands__
 
@@ -44,4 +49,3 @@ __Useful commands__
     __/gamerule doDaylightCycle false__
 3. Turn off mob spawning:
     __/gamerule doMobSpawning false__
-4.
