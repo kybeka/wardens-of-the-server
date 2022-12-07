@@ -10,6 +10,14 @@ __Team members (so far):__
 5. Alessandro Zanzi
 6.
 
+______________________________________________________
+
+__Vision Statement__
+
+For avid Minecraft players who are tired of over-full Minecraft servers with laggy mini-games, who want to be able to play in single-player mode against a powerful in-game bot AI. Featuring: The 'Minecraft Build & Cross' mini-game is  a unique Minecraft mini-game that lets you launch the mini-game straight from your browser, without any additional hassle. Unlike big servers like Hypixel or Mineplex where the servers overwhelm users with additional costs and unresponsive servers, our Project aims at creating a fun way to be able to play with bots in Minecraft and avoid many of the problems that simple MInecraft players have to deal with nowadays. Just launch the web server on your browser, input your Minecraft username and launch the game. The scorebaord on the website automatically updates as you play!
+
+______________________________________________________
+
 __Project:__
 Minecraft 'Build & Cross' game w/ bot
 
