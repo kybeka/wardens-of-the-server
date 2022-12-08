@@ -52,6 +52,7 @@
     "mojangson": "^2.0.2",
     "moo": "^0.5.2",
     "ms": "^2.1.2",
+    "mysql2": "^2.3.3",
     "nearley": "^2.20.1",
     "node-fetch": "^2.6.7",
     "node-rsa": "^0.4.2",
@@ -107,5 +108,8 @@
   "bugs": {
     "url": "https://github.com/kybeka/wardens-of-the-server/issues"
   },
-  "homepage": "https://github.com/kybeka/wardens-of-the-server#readme"
+  "homepage": "https://github.com/kybeka/wardens-of-the-server#readme",
+  "devDependencies": {
+    "dotenv": "^16.0.3"
+  }
 }

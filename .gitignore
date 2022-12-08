@@ -1,3 +1,4 @@
 node_modules/
 launcher_webpage/node_modules/
 ACCOUNT.json/
+.env
