@@ -217,11 +217,11 @@ h4{
     outline: none;
 }
  
-.body .body-content .game-table article{
+body .body-content .game-table article{
     cursor: pointer;
 }
 
-.body .body-content .game-table article button{
+body .body-content .game-table article button{
     display: none;
 }
 
@@ -254,7 +254,7 @@ h4{
 
 
 @media (max-width: 768px) {
-    .body {
+    body {
         display: flex;
         min-height: 100vh;
         flex-direction: column;
@@ -339,7 +339,7 @@ h4{
     main{
         width: 70%;
     }
-    .body {
+    body {
         display: flex;
         min-height: 100vh;
         flex-direction: column;

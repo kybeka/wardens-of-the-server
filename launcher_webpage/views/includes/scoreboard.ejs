@@ -1,16 +1,17 @@
-<aside class="content-sidebar">
-  <!-- player highscores will be displayed here -->
-  <h4>Top 10 Players</h4>
-  <table>
+<h4>Top 10 Players</h4>
+<table>
+  <tr>
+    <th>Player</th>
+    <th>Score</th>
+  </tr>
+  <% for (let s of scores) { %>
     <tr>
-      <th>Player</th>
-      <th>Score</th>
+      <td>
+        <%= s.player %>
+          </th>
+      <td>
+        <%= s.score %>
+          </th>
     </tr>
-    <% for (let s of scores) { %>
-      <tr>
-          <td><%= s.player %></th>
-          <td><%= s.score %></th>
-      </tr>
     <% } %>
-  </table>
-</aside>
+</table>

@@ -1,39 +1,11 @@
-<!DOCTYPE html>
+<article>
+    <h2>Welcome to Build & Cross!</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A deleniti ipsa nemo enim optio, dolore dolor omnis minus incidunt quas doloremque eum esse velit? Expedita blanditiis sit labore voluptate quasi.</p>
+</article>
 
-<html>
+<br />
 
-<head>
-    <meta name="author" content="Kyla Kaplan">
-    <meta name="author" content="Delara Lomen">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css">
-    <title>Build & Cross</title>
-</head>
-
-<body class="body">
-    <header>
-        <h1>Build & Cross</h1>
-    </header>
-    <div class="body-content">
-        <main class="content-main">
-            <% if (locals.current=="customize") {%>
-                <%- include("includes/customize_main")%>
-            <% } else { %>
-                <%- include("includes/homepage_main")%>
-            <% } %>
-                <%- include("includes/launcher") %>
-        </main>
-        <%- include("includes/scoreboard", { scores }) %>
-        <nav class="content-nav">
-            <ul>
-                <li id="home" <li class="<%= locals.current == "homepage" ? "current-page" : "" %>"><a
-                        href="/">Homepage</a></li>
-                <li id="customize" <li class="<%= locals.current == "customize" ? "current-page" : "" %>"><a
-                        href="/customize">Customize</a></li>
-            </ul>
-        </nav>
-    </div>
-    <footer class="footer"> © Build & Cross, 2022 </footer>
-</body>
-
-</html>
+<div class="img-descr">
+    <h4 class="img-txt"> Minecraft:</h4>
+    <img src="img/minecraft-img.jpg" alt="Minecraft" height="400" width="400" />
+</div>
