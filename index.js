@@ -97,14 +97,16 @@ function lookAtNearestPlayer () {
     bot.lookAt(pos);
 }
 
-bot.on('physicTick', lookAtNearestPlayer);
+// bot.on('physicTick', lookAtNearestPlayer);
 
-bot.on('playerCollect', (collector, collected) => {
+function COLLECTING (collector, collected) {
     if (collector.type === 'player') {
       const item = collected.getDroppedItem()
       bot.chat(`${collector.username !== bot.username ? ("I'm so jealous. " + collector.username) : 'I '} collected ${item.count} ${item.displayName}`)
     }
-});
+}
+
+bot.on('playerCollect', COLLECTING);
 
 // function isIronBlock(block) {
 //     return block.name === "iron_block";
