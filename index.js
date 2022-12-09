@@ -79,9 +79,10 @@
 
 
 
+
 const mineflayer = require('mineflayer');
 
-const portNum = 41955;  //DON'T FORGET TO CHANGE THE PORT NUMBER
+const portNum = 43577;  //DON'T FORGET TO CHANGE THE PORT NUMBER
 
 const bot = mineflayer.createBot({
     host: 'localhost',
@@ -89,24 +90,71 @@ const bot = mineflayer.createBot({
     username: 'looking_bot'
 });
 
-function lookAtNearestPlayer () {
-    const playerFilter = (entity) => entity.type === 'player'
-    const playerEntity = bot.nearestEntity(playerFilter);
+function lookAtNearestPlayer() {
+    const playerFilter = (entity) => entity.type === 'player';
+    const playerEntity = bot2.nearestEntity(playerFilter);
     if (!playerEntity) return;
     const pos = playerEntity.position.offset(0, playerEntity.height, 0);
-    bot.lookAt(pos);
+    bot2.lookAt(pos);
 }
 
-// bot.on('physicTick', lookAtNearestPlayer);
-
-function COLLECTING (collector, collected) {
-    if (collector.type === 'player') {
-      const item = collected.getDroppedItem()
-      bot.chat(`${collector.username !== bot.username ? ("I'm so jealous. " + collector.username) : 'I '} collected ${item.count} ${item.displayName}`)
+function dropAll() {
+    const excludedItems = ['fishing_rod']
+    const item = bot.inventory.items().find(item => !excludedItems.includes(item.name))
+    if (item) {
+        bot.tossStack(item)
+            .then(() => {
+                setTimeout(dropAll)
+            })
+            .catch(err => {
+                console.log(err)
+                setTimeout(dropAll, 100)
+            })
     }
 }
 
-bot.on('playerCollect', COLLECTING);
+function collectItems(collector, collected) {
+    if (collector.type === 'player') {
+        const item = collected.getDroppedItem()
+        dropAll();
+    }
+}
+
+bot.on('playerCollect', collectItems);
+
+
+const pathfinder = require('mineflayer-pathfinder').pathfinder
+const Movements = require('mineflayer-pathfinder').Movements
+const { GoalNear } = require('mineflayer-pathfinder').goals
+
+const bot2 = mineflayer.createBot({
+    host: 'localhost',
+    port: portNum,
+    username: 'walking_bot'
+});
+
+bot2.loadPlugin(pathfinder)
+
+
+function followPlayer() {
+
+    const playerFilter = (entity) => entity.type === 'player';
+    const playerEntity = bot2.nearestEntity(playerFilter);
+    if (!playerEntity) return;
+    let currentP = playerEntity.position;
+    let previousP = bot2.entity.position;
+    if (currentP != previousP) {
+        const defaultMove = new Movements(bot2)
+        bot2.pathfinder.setMovements(defaultMove)
+        bot2.pathfinder.setGoal(new GoalNear(currentP.x, currentP.y, currentP.z, 2))
+    }
+}
+
+
+bot2.on('physicTick', lookAtNearestPlayer);
+bot2.on('physicTick', followPlayer);
+
+
 
 // function isIronBlock(block) {
 //     return block.name === "iron_block";
