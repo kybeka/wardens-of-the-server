@@ -21,45 +21,15 @@
             <% } else { %>
                 <%- include("includes/homepage_main")%>
             <% } %>
-                <%- include("includes/launcher")%>
+                <%- include("includes/launcher") %>
         </main>
-        <aside class="content-sidebar">
-            <!-- player highscores will be displayed here -->
-            <h4>Top 10 Players</h4>
-            <table>
-                <tr>
-                    <th>Player</th>
-                    <th>Score</th>
-                </tr>
-                <tr>
-                    <td>thebestgamer</td>
-                    <td>600000</td>
-                </tr>
-                </tr>
-                <tr>
-                    <td>user048</td>
-                    <td>400000</td>
-                </tr>
-                <tr>
-                    <td>smiley11</td>
-                    <td>300000</td>
-                </tr>
-                <tr>
-                    <td>hackerio</td>
-                    <td>200000</td>
-                </tr>
-                <tr>
-                    <td>user93123</td>
-                    <td>100000</td>
-                </tr>
-            </table>
-        </aside>
+        <%- include("includes/scoreboard", { scores }) %>
         <nav class="content-nav">
             <ul>
                 <li id="home" <li class="<%= locals.current == "homepage" ? "current-page" : "" %>"><a
-                        href="http://localhost:8888/homepage">Homepage</a></li>
+                        href="/">Homepage</a></li>
                 <li id="customize" <li class="<%= locals.current == "customize" ? "current-page" : "" %>"><a
-                        href="http://localhost:8888/customize">Customize</a></li>
+                        href="/customize">Customize</a></li>
             </ul>
         </nav>
     </div>
