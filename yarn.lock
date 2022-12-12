@@ -39,9 +39,15 @@
   integrity sha512-KJ021B1nlQUBLopzZmPBVuGU9un7WJd/W4ya7Ih02B4Uwky5Nja0yGYav2EfYIk0RR2Q9oVhf60S2XR1BCWJ2g==
 
 "@types/node@>=10.0.0":
+<<<<<<< HEAD
   version "18.11.13"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.13.tgz#dff34f226ec1ac0432ae3b136ec5552bd3b9c0fe"
   integrity sha512-IASpMGVcWpUsx5xBOrxMj7Bl8lqfuTY7FKAnPmu5cHkfQVWF8GulWS1jbRqA934qZL35xh5xN/+Xe/i26Bod4w==
+=======
+  version "18.11.12"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.12.tgz#89e7f8aa8c88abf432f9bd594888144d7dba10aa"
+  integrity sha512-FgD3NtTAKvyMmD44T07zz2fEf+OKwutgBCEVM8GcvMGVGaDktiLNTDvPwC/LUe3PinMW+X6CuLOF2Ui1mAlSXg==
+>>>>>>> f9b4999c6b79bbc73b81f64e44485a152b20eca8
 
 "@types/readable-stream@^2.3.13":
   version "2.3.15"
@@ -705,7 +711,7 @@ mineflayer-blockfinder@^0.0.7:
 
 mineflayer-collectblock@^1.4.1:
   version "1.4.1"
-  resolved "https://registry.npmjs.org/mineflayer-collectblock/-/mineflayer-collectblock-1.4.1.tgz"
+  resolved "https://registry.yarnpkg.com/mineflayer-collectblock/-/mineflayer-collectblock-1.4.1.tgz#30f36fd2f68bf1664e5660233bcfc578602b4054"
   integrity sha512-E5i5nxwx+FVIkJj5TFJpBQkxJ2pvCxN7Ubi2rB20ybPdRArmXr8kM6VwrLFvx0jhvR0z7+u4s5llwCCCMZ1weA==
   dependencies:
     mineflayer "^4.0.0"
@@ -734,6 +740,18 @@ mineflayer-tool@^1.1.0:
     mineflayer-pathfinder "^2.1.1"
     prismarine-nbt "^2.0.0"
 
+<<<<<<< HEAD
+=======
+mineflayer-tool@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/mineflayer-tool/-/mineflayer-tool-1.2.0.tgz#a4c27594f7797a4254ee94bbc9ee4620c4253b63"
+  integrity sha512-TRd7JOX4obJnzqzVi+4MLKmbeeCDjp9taerLKM8+AGpWfgtdbAguGmsr3BHu+TdXxOIT05veYecCv77S3KX6PA==
+  dependencies:
+    mineflayer "^4.0.0"
+    mineflayer-pathfinder "^2.1.1"
+    prismarine-nbt "^2.0.0"
+
+>>>>>>> f9b4999c6b79bbc73b81f64e44485a152b20eca8
 mineflayer-web-inventory@^1.3.0:
   version "1.8.3"
   resolved "https://registry.yarnpkg.com/mineflayer-web-inventory/-/mineflayer-web-inventory-1.8.3.tgz#69586c3ae79b160d7d4eb70af211422f9d7c8e27"
