@@ -39,15 +39,9 @@
   integrity sha512-KJ021B1nlQUBLopzZmPBVuGU9un7WJd/W4ya7Ih02B4Uwky5Nja0yGYav2EfYIk0RR2Q9oVhf60S2XR1BCWJ2g==
 
 "@types/node@>=10.0.0":
-<<<<<<< HEAD
-  version "18.11.13"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.13.tgz#dff34f226ec1ac0432ae3b136ec5552bd3b9c0fe"
-  integrity sha512-IASpMGVcWpUsx5xBOrxMj7Bl8lqfuTY7FKAnPmu5cHkfQVWF8GulWS1jbRqA934qZL35xh5xN/+Xe/i26Bod4w==
-=======
   version "18.11.12"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.12.tgz#89e7f8aa8c88abf432f9bd594888144d7dba10aa"
   integrity sha512-FgD3NtTAKvyMmD44T07zz2fEf+OKwutgBCEVM8GcvMGVGaDktiLNTDvPwC/LUe3PinMW+X6CuLOF2Ui1mAlSXg==
->>>>>>> f9b4999c6b79bbc73b81f64e44485a152b20eca8
 
 "@types/readable-stream@^2.3.13":
   version "2.3.15"
@@ -678,6 +672,11 @@ minecraft-folder-path@^1.2.0:
   resolved "https://registry.npmjs.org/minecraft-folder-path/-/minecraft-folder-path-1.2.0.tgz"
   integrity sha512-qaUSbKWoOsH9brn0JQuBhxNAzTDMwrOXorwuRxdJKKKDYvZhtml+6GVCUrY5HRiEsieBEjCUnhVpDuQiKsiFaw==
 
+minecraft-motd-util@^1.1.9:
+  version "1.1.12"
+  resolved "https://registry.yarnpkg.com/minecraft-motd-util/-/minecraft-motd-util-1.1.12.tgz#b1e3627329a770c015e5c32261510eb9ff0a2f81"
+  integrity sha512-5TuTRjrRupSTruea0nRC37r0FdhkS1O4wIJKAYfwJRCQd/X4Zyl/dVIs96h9UVW6N8jhIuz9pNkrDsqyN7VBdA==
+
 minecraft-protocol@^1.17.0, minecraft-protocol@^1.36.0, minecraft-protocol@^1.36.1:
   version "1.36.2"
   resolved "https://registry.yarnpkg.com/minecraft-protocol/-/minecraft-protocol-1.36.2.tgz#0dd89d6f8a96730ea14343f85743352814bc7da6"
@@ -701,6 +700,13 @@ minecraft-protocol@^1.17.0, minecraft-protocol@^1.36.0, minecraft-protocol@^1.36
     uuid-1345 "^1.0.1"
     yggdrasil "^1.4.0"
 
+minecraft-server-util@^5.3.1:
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/minecraft-server-util/-/minecraft-server-util-5.3.1.tgz#18c7d3851b5875194ac6b7ef6c77e8f53679580c"
+  integrity sha512-jmBc7Qtaf53K0OpmlZt8cYU0n7rG1totf8gi9V8/jVBrh/4kuyTsw1x0VQR9TUcYUApql18WAN8n8whAGzlWZA==
+  dependencies:
+    minecraft-motd-util "^1.1.9"
+
 mineflayer-blockfinder@^0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/mineflayer-blockfinder/-/mineflayer-blockfinder-0.0.7.tgz#777c73335238e5f999051d7d46bfe028a39b14ec"
@@ -708,15 +714,6 @@ mineflayer-blockfinder@^0.0.7:
   dependencies:
     mineflayer "^2.1.0"
     vec3 "^0.1.3"
-
-mineflayer-collectblock@^1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/mineflayer-collectblock/-/mineflayer-collectblock-1.4.1.tgz#30f36fd2f68bf1664e5660233bcfc578602b4054"
-  integrity sha512-E5i5nxwx+FVIkJj5TFJpBQkxJ2pvCxN7Ubi2rB20ybPdRArmXr8kM6VwrLFvx0jhvR0z7+u4s5llwCCCMZ1weA==
-  dependencies:
-    mineflayer "^4.0.0"
-    mineflayer-pathfinder "^2.1.1"
-    mineflayer-tool "^1.1.0"
 
 mineflayer-pathfinder@^2.1.1, mineflayer-pathfinder@^2.4.1:
   version "2.4.1"
@@ -731,17 +728,6 @@ mineflayer-pathfinder@^2.1.1, mineflayer-pathfinder@^2.4.1:
     prismarine-physics "^1.5.2"
     vec3 "^0.1.7"
 
-mineflayer-tool@^1.1.0:
-  version "1.2.0"
-  resolved "https://registry.npmjs.org/mineflayer-tool/-/mineflayer-tool-1.2.0.tgz"
-  integrity sha512-TRd7JOX4obJnzqzVi+4MLKmbeeCDjp9taerLKM8+AGpWfgtdbAguGmsr3BHu+TdXxOIT05veYecCv77S3KX6PA==
-  dependencies:
-    mineflayer "^4.0.0"
-    mineflayer-pathfinder "^2.1.1"
-    prismarine-nbt "^2.0.0"
-
-<<<<<<< HEAD
-=======
 mineflayer-tool@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/mineflayer-tool/-/mineflayer-tool-1.2.0.tgz#a4c27594f7797a4254ee94bbc9ee4620c4253b63"
@@ -751,7 +737,6 @@ mineflayer-tool@^1.2.0:
     mineflayer-pathfinder "^2.1.1"
     prismarine-nbt "^2.0.0"
 
->>>>>>> f9b4999c6b79bbc73b81f64e44485a152b20eca8
 mineflayer-web-inventory@^1.3.0:
   version "1.8.3"
   resolved "https://registry.yarnpkg.com/mineflayer-web-inventory/-/mineflayer-web-inventory-1.8.3.tgz#69586c3ae79b160d7d4eb70af211422f9d7c8e27"
