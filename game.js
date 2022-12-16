@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const rcon = require('./rcon');
 const maps = require('./maps.json');
 const mineflayer = require('mineflayer');
@@ -6,6 +7,7 @@ const mineflayer = require('mineflayer');
 // const bot = require('./bot');
 
 const app = express();
+app.use(cors({ origin: '*' }));
 
 app.use(express.json({ limit: '4MB' }));
 
@@ -28,7 +30,7 @@ class MCBot {
         clearInterval(int);
       }
     }, 1000)
-    
+
   }
 }
 
@@ -56,6 +58,6 @@ const startGame = async player => {
   await bot.tp();
 }
 
-app.listen(8888, () => {
-  console.log(`Listening on port 8888`)
+app.listen(process.env.WEB_PORT, () => {
+  console.log(`Listening on port ${process.env.WEB_PORT}`)
 })

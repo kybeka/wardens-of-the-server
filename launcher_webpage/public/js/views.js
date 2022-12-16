@@ -1,4 +1,4 @@
-//EJS Compiled Views - This file was automatically generated on Fri Dec 09 2022 14:30:19 GMT+0100 (Central European Standard Time)
+//EJS Compiled Views - This file was automatically generated on Fri Dec 16 2022 14:16:52 GMT+0100 (Central European Standard Time)
 ejs.views_include = function(locals) {
     console.log("views_include_setup",locals);
     return function(path, d) {
@@ -171,13 +171,13 @@ function encode_char(c) {
 };
 ;
 var __line = 1
-  , __lines = "<form action=\"/play\" method=\"post\">\n    <input type=\"text\" id=\"player\">\n    <input id=\"start-button\" type=\"submit\" value=\"Launch Minecraft!\">\n</form>"
+  , __lines = "<form method=\"POST\" action=\"http://localhost:9000/play\">\n    <input type=\"text\" name=\"player\" id=\"player\">\n    <input id=\"start-button\" type=\"submit\" value=\"Launch Minecraft!\">\n</form>"
   , __filename = undefined;
 try {
   var __output = "";
   function __append(s) { if (s !== undefined && s !== null) __output += s }
   with (locals || {}) {
-    ; __append("<form action=\"/play\" method=\"post\">\n    <input type=\"text\" id=\"player\">\n    <input id=\"start-button\" type=\"submit\" value=\"Launch Minecraft!\">\n</form>")
+    ; __append("<form method=\"POST\" action=\"http://localhost:9000/play\">\n    <input type=\"text\" name=\"player\" id=\"player\">\n    <input id=\"start-button\" type=\"submit\" value=\"Launch Minecraft!\">\n</form>")
     ; __line = 4
   }
   return __output;

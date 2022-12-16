@@ -64,9 +64,9 @@ const close = async () => {
  */
  const isPlayerOnline = async player => {
   try {
-    let { players } = await util.status(process.env.SRV_HOST, process.env.SRV_PORT);
+    let { players } = await util.status(process.env.SRV_HOST, parseInt(process.env.SRV_PORT));
     for (let p of players.sample) {
-      if (p.name === player)
+      if (p.name == player)
         return true;
     }
     return false;

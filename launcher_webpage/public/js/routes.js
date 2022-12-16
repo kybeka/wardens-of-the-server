@@ -15,9 +15,11 @@ function initLinks() {
             switch (url.pathname) {
                 case "/":
                     document.querySelector("main").innerHTML = ejs.views_homepage();
+                    initLinks();
                     return;
                 case "/customize":
                     document.querySelector("main").innerHTML = ejs.views_customize();
+                    initLinks();
                     return;
             }
         });
@@ -29,16 +31,25 @@ function initLinks() {
 
             const url = form.getAttribute("action");
             const method = form.getAttribute("method");
-            const body = new FormData(form);
+            // const body = new FormData(form);
+            let player = document.querySelector("#player").value;
+            let body = JSON.stringify({ player });
 
-            const res = await fetch(url, { method, body });
+            const res = await fetch(url, {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                method,
+                body
+            });
             if (res.status >= 400) throw new Error(res.status);
 
-            switch (url) {
-                case "/play":
-                    // TODO: play
-                    break;
-            }
+            // switch (url) {
+            //     case "/play":
+            //         // TODO: play
+            //         break;
+            // }
         });
     });
 }
