@@ -2,37 +2,12 @@ const express = require('express');
 const cors = require('cors');
 const rcon = require('./rcon');
 const maps = require('./maps.json');
-const mineflayer = require('mineflayer');
 
-// const bot = require('./bot');
+const MCBot = require('./bot');
 
 const app = express();
 app.use(cors({ origin: '*' }));
-
 app.use(express.json({ limit: '4MB' }));
-
-// TODO: move to separate file
-class MCBot {
-  constructor(name, spawn) {
-    this.bot = mineflayer.createBot({
-      host: process.env.SRV_HOST || 'localhost',
-      port: process.env.SRV_PORT || portNum,
-      username: name
-    });
-
-    this.spawn = spawn;
-  }
-
-  async tp() {
-    const int = setInterval(async () => {
-      if (this.bot.player) {
-        await rcon.run(`tp ${this.bot.username} ${this.spawn.x} ${this.spawn.y} ${this.spawn.z}`);
-        clearInterval(int);
-      }
-    }, 1000)
-
-  }
-}
 
 app.post('/play', async (req, res) => {
   const { player } = req.body;
@@ -45,17 +20,21 @@ app.post('/play', async (req, res) => {
   }
   /* Player is online */
   res.send({ message: 'game started' });
+  console.log('[game] starting...')
   await startGame(player);
 });
 
-// let bots = [];
-
 const startGame = async player => {
-  /* Teleport player to plot */
-  await rcon.run(`tp ${player} ${maps.spawn.player.x} ${maps.spawn.player.y} ${maps.spawn.player.z}`);
   /* Create new bot */
-  const bot = new MCBot('jef', maps.spawn.bot);
-  await bot.tp();
+  const bot = new MCBot('jef', maps.spawn.bot, maps.center);
+  await rcon.run(`title ${player} subtitle {"text":"Fast! ...replace the missing rail!","color":"blue"}`);
+  await rcon.run(`title ${player} title {"text":"Game starts!","color":"red"}`);
+  setTimeout(async () => {
+    /* Teleport bot and player to plot */
+    await bot.tp();
+    await rcon.run(`tp ${player} ${maps.spawn.player.x} ${maps.spawn.player.y} ${maps.spawn.player.z}`);
+    bot.play();
+  }, 2000);
 }
 
 app.listen(process.env.WEB_PORT, () => {
