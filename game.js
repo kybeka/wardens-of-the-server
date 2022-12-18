@@ -32,15 +32,12 @@ app.post('/play', async (req, res) => {
 
 const startGame = async (player, map) => {
   /* Create new bot */
-  console.log(maps)
-  console.log(map)
   const bot = new MCBot(map, player, maps[map]);
   await rcon.run(`title ${player} subtitle {"text":"Fast! ...replace the missing rail!","color":"blue"}`);
   await rcon.run(`title ${player} title {"text":"Game starts!","color":"red"}`);
   setTimeout(async () => {
     /* Teleport bot and player to plot */
     await bot.tp();
-    bot.play();
     await rcon.run(`tp ${player} ${maps[map].spawn.player.x} ${maps[map].spawn.player.y} ${maps[map].spawn.player.z}`);
   }, 1000);
 }

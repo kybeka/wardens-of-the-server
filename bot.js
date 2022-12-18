@@ -18,7 +18,17 @@ const mcData = require('minecraft-data')('1.19.2');
 
 let matches = new Map();
 
+/**
+ * Class representing a single mineflayer Bot.
+ */
 class MCBot {
+  /**
+   * Create a bot.
+   * 
+   * @param {String} name   the name of the bot.
+   * @param {String} player the name of the opponent player. 
+   * @param {String} map    the name of the map.
+   */
   constructor(name, player, map) {
     this.name = name;
     this.player = player;
@@ -61,7 +71,7 @@ class MCBot {
     this.bot.once('spawn', async () => {
       console.log(`[${this.bot.username}] spawned.`);
       const movements = new Movements(this.bot);
-      movements.digCost = 100;
+      movements.digCost = 10;
       // movements.placeCost = 10;
       this.bot.pathfinder.setMovements(movements);
       this.startTime = this.bot.time.age;
@@ -72,18 +82,18 @@ class MCBot {
    * Add rail placed listener.
    */
   addGameOverListener(missingBlock) {
+    console.log('plaed')
     this.bot.world.on('blockUpdate', (oldBlock, newBlock) => {
       if (newBlock.position.x == missingBlock.position.x
         && newBlock.position.y == missingBlock.position.y
         && newBlock.position.z == missingBlock.position.z) {
         /* Check if rail */
+        if (newBlock.name == 'rail') {
         setTimeout(async () => {
-          if (newBlock.name == 'rail') {
             const score = (this.bot.time.age - this.startTime) / 20;
-            // await this.bot.quit();
             winGame(this.bot, this.player, this.map.name, score);
-          }
-        }, 1000);
+          }, 1000);
+        }
       }
     });
   }
@@ -97,7 +107,6 @@ class MCBot {
     const missingBlock = await this.getMissingRail();
     if (!missingBlock) return;
     this.addGameOverListener(missingBlock);
-    await this.replaceRail(missingBlock.position);
 
     /* 1. Collect wood */
     await this.mineNode('oak_log', 4);
@@ -116,28 +125,21 @@ class MCBot {
     // /* 4. Craft furnace */
     await this.mineNode('stone', 9);
     await this.mineNode('coal_ore', 4);
-    await this.mineNode('iron_ore', 4);
+    await this.mineNode('iron_ore', 6);
     const furnaceBlock = await this.getFurnace();
 
     // /* 5. Smelt iron ore */
     const furnace = await this.bot.openFurnace(furnaceBlock);
     await furnace.putFuel(720, null, 4);
-    await furnace.putInput(727, null, 4);
+    await furnace.putInput(727, null, 6);
 
-    // furnace.on('update', async e => {
-    //   console.log(furnace.progress == 1)
-    // Go to furnace
-    // let { position } = furnace;
-    // let goal = new GoalGetToBlock(position.x, position.y, position.z);
-    // await bot.pathfinder.goto(goal);
+    /* Wait for furnace */
+    await this.bot.waitForTicks(6.3 * 200)
+    await furnace.takeOutput();
 
-    // await furnace.takeOutput();
-    // });
-    /* 3. Upgrade to iron pickaxe */
-    // bench = await getCraftingTable(bot);
-    // await craftItem(bot, 'iron_pickaxe', 1, bench);
-    //    Logic to detect missing tracks 
-
+    bench = await this.getCraftingTable(this.bot);
+    await this.craftItem('rail', 1, bench);
+    await this.replaceRail(missingBlock.position);
   }
 
   /**
@@ -150,6 +152,9 @@ class MCBot {
         clearInterval(int);
       }
     }, 1000)
+    setTimeout(() => {
+      this.play();
+    }, 1500);
   }
 
   /**
@@ -255,7 +260,7 @@ class MCBot {
       if (!furnace) {
         /* Not in inventory, craft furnace */
         console.log('furnace not found, crafting one!');
-        let bench = await getCraftingTable(this.bot);
+        let bench = await this.getCraftingTable(this.bot);
         await craftItem(this.bot, 'furnace', 1, bench);
         await this.bot.waitForTicks(10);
       }
@@ -403,6 +408,11 @@ class MCBot {
     return this.bot.blockAt(pos);
   }
 
+  /**
+   * Prompts the bot to fill the missing rail.
+   * 
+   * @param {Vec3} pos the position of the missing rail.
+   */
   async replaceRail(pos) {
     const rail = this.bot.inventory.findInventoryItem(687, null);
     if (!rail) return;
@@ -420,17 +430,21 @@ class MCBot {
   }
 }
 
+/**
+ * Triggers the win game sequence.
+ * 
+ * @param {Bot}    bot    the bot in the match.
+ * @param {String} player the username of the player.
+ * @param {String} map    the name of the map.
+ * @param {Number} score  the score of the player. Null if bot won.
+ */
 const winGame = async (bot, player, map, score = null) => {
   console.log(!matches.get(map));
 
-  if (!matches.get(map)) {
-    console.log('won')
-    return;
-  }
-
+  if (!matches.get(map)) return;
   matches.set(map, false);
+
   await rcon.run(`clear ${player}`);
-  console.log('Won by player? ' + score);
   await rcon.run(`tp ${player} 0 174 0`);
 
   setTimeout(async () => {
@@ -451,6 +465,11 @@ const winGame = async (bot, player, map, score = null) => {
   }
 }
 
+/**
+ * Resets the plot in the initial state.
+ * 
+ * @param {String} map the name of the map.
+ */
 const resetMap = async map => {
   await rcon.run(`/schem load ${map}`);
   await rcon.run(`/world world`);
