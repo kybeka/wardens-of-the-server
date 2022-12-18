@@ -61,6 +61,8 @@ class MCBot {
     this.bot.once('spawn', async () => {
       console.log(`[${this.bot.username}] spawned.`);
       this.bot.pathfinder.setMovements(new Movements(this.bot));
+      this.bot.pathfinder.canDig = false;
+      this.bot.pathfinder.placeCost = 5;
       this.startTime = this.bot.time.age;
     });
   }
@@ -363,7 +365,7 @@ class MCBot {
   async getMissingRail() {
     /* Find all 100 rails in 50 block radius */
     const rails = this.bot.findBlocks({
-      // point: vec3(this.center.x, this.center.y, this.center.z), //center of plot
+      point: vec3(this.map.center.x, this.map.center.y, this.map.center.z), //center of plot
       matching: mcData.blocksByName['rail'].id,
       maxDistance: 100,
       count: 100

@@ -40,7 +40,7 @@ const insert = async (player, score) => {
  */
 const getAll = async (lim = false) => {
   try {
-    const [rows] = await pool.promise().query(`SELECT * FROM scores ORDER BY score DESC${lim ? ' LIMIT ' + parseInt(lim) : ''};`);
+    const [rows] = await pool.promise().query(`SELECT * FROM scores ORDER BY score ASC${lim ? ' LIMIT ' + parseInt(lim) : ''};`);
     return rows;
   } catch (err) {
     throw err;
@@ -72,7 +72,7 @@ const getById = async id => {
  */
 const getByPlayer = async (player, lim = false) => {
   try {
-    const [rows] = await pool.promise().query(`SELECT * FROM scores WHERE player = ? ORDER BY score DESC${lim ? ' LIMIT ' + parseInt(lim) : ''};`, [player]);
+    const [rows] = await pool.promise().query(`SELECT * FROM scores WHERE player = ? ORDER BY score ASC${lim ? ' LIMIT ' + parseInt(lim) : ''};`, [player]);
     return rows;
   } catch (error) {
     throw error;

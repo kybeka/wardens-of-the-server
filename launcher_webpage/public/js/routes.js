@@ -33,7 +33,9 @@ function initLinks() {
             const method = form.getAttribute("method");
             // const body = new FormData(form);
             let player = document.querySelector("#player").value;
-            let body = JSON.stringify({ player });
+            let map = document.querySelector("#map").value;
+            let level = document.querySelector("#level").value;
+            let body = JSON.stringify({ player, map, level });
 
             const res = await fetch(url, {
                 headers: {
