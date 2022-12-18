@@ -45,6 +45,11 @@ function initLinks() {
                 method,
                 body
             });
+
+            setTimeout(() => {
+                document.querySelector("main").innerHTML += `<iframe id="myiframe" src="http://localhost:3000" height="700" width="500"> </iframe>`;
+            }, 4000);
+           
             if (res.status >= 400) throw new Error(res.status);
 
             // switch (url) {
