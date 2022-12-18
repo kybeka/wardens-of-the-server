@@ -6,6 +6,7 @@
  */
 
 const mineflayer = require('mineflayer');
+const inventoryViewer = require('mineflayer-web-inventory');
 const toolPlugin = require('mineflayer-tool').plugin;
 const { pathfinder, Movements, goals } = require('mineflayer-pathfinder');
 const { GoalGetToBlock, GoalNear } = goals;
@@ -65,7 +66,9 @@ class MCBot {
       // movements.placeCost = 10;
       this.bot.pathfinder.setMovements(movements);
       this.startTime = this.bot.time.age;
+      inventoryViewer(this.bot);
     });
+    
   }
 
   /**
