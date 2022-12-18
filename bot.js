@@ -10,15 +10,21 @@ const toolPlugin = require('mineflayer-tool').plugin;
 const { pathfinder, Movements, goals } = require('mineflayer-pathfinder');
 const { GoalGetToBlock, GoalNear } = goals;
 const rcon = require('./rcon');
+const vec3 = require('vec3');
+const db = require('./db');
 require('dotenv').config();
 
 const mcData = require('minecraft-data')('1.19.2');
 
+let matches = new Map();
+
 class MCBot {
-  constructor(name, spawn, center) {
+  constructor(name, player, map) {
     this.name = name;
-    this.spawn = spawn;
-    this.center = center;
+    this.player = player;
+    this.map = map;
+    this.startTime;
+    this.endTime;
 
     this.initBot();
   }
@@ -55,6 +61,27 @@ class MCBot {
     this.bot.once('spawn', async () => {
       console.log(`[${this.bot.username}] spawned.`);
       this.bot.pathfinder.setMovements(new Movements(this.bot));
+      this.startTime = this.bot.time.age;
+    });
+  }
+
+  /**
+   * Add rail placed listener.
+   */
+  addGameOverListener(missingBlock) {
+    this.bot.world.on('blockUpdate', (oldBlock, newBlock) => {
+      if (newBlock.position.x == missingBlock.position.x
+        && newBlock.position.y == missingBlock.position.y
+        && newBlock.position.z == missingBlock.position.z) {
+        /* Check if rail */
+        setTimeout(async () => {
+          if (newBlock.name == 'rail') {
+            const score = (this.bot.time.age - this.startTime) / 20;
+            // await this.bot.quit();
+            winGame(this.bot, this.player, this.map.name, score);
+          }
+        }, 1000);
+      }
     });
   }
 
@@ -62,15 +89,18 @@ class MCBot {
    * Prompts bot to start playing game.
    */
   async play() {
-    await this.bot.waitForTicks(50);
+    await this.bot.waitForTicks(20);
 
-    await this.getMissingRail();
+    const missingBlock = await this.getMissingRail();
+    if (!missingBlock) return;
+    this.addGameOverListener(missingBlock);
+    await this.replaceRail(missingBlock.position);
 
     /* 1. Collect wood */
-    await this.mineNode('dark_oak_log', 4);
+    await this.mineNode('oak_log', 4);
 
     // /* 2. Make wooden pickaxe */
-    await this.craftItem('dark_oak_planks', 4);
+    await this.craftItem('oak_planks', 4);
     await this.craftItem('stick', 1);
     let bench = await this.getCraftingTable();
     await this.craftItem('wooden_pickaxe', 1, bench);
@@ -113,7 +143,7 @@ class MCBot {
   async tp() {
     const int = setInterval(async () => {
       if (this.bot.player) {
-        await rcon.run(`tp ${this.bot.username} ${this.spawn.x} ${this.spawn.y} ${this.spawn.z}`);
+        await rcon.run(`tp ${this.bot.username} ${this.map.spawn.bot.x} ${this.map.spawn.bot.y} ${this.map.spawn.bot.z}`);
         clearInterval(int);
       }
     }, 1000)
@@ -331,9 +361,6 @@ class MCBot {
    * @return {Vec3} the position of the missing rail.
    */
   async getMissingRail() {
-    const rail = this.bot.inventory.findInventoryItem(687, null);
-    if (!rail) return;
-
     /* Find all 100 rails in 50 block radius */
     const rails = this.bot.findBlocks({
       // point: vec3(this.center.x, this.center.y, this.center.z), //center of plot
@@ -341,8 +368,6 @@ class MCBot {
       maxDistance: 100,
       count: 100
     });
-
-    console.log(rails);
     if (!rails) return;
 
     let pos;
@@ -372,6 +397,14 @@ class MCBot {
     }
     if (!pos) return console.log('no missing rail');
 
+    /* Get missing rail block */
+    return this.bot.blockAt(pos);
+  }
+
+  async replaceRail(pos) {
+    const rail = this.bot.inventory.findInventoryItem(687, null);
+    if (!rail) return;
+
     /* Go to missing rail */
     const goal = new GoalGetToBlock(pos.x, pos.y, pos.z);
     await this.bot.pathfinder.goto(goal);
@@ -380,7 +413,48 @@ class MCBot {
     const baseBlock = this.bot.blockAt(vec3(pos.x, pos.y - 1, pos.z));
     await this.bot.equip(rail);
     await this.bot.placeBlock(baseBlock, vec3(0, 1, 0));
+    // await this.bot.quit();
+    winGame(this.bot, this.player, this.map.name);
   }
 }
 
-module.exports = MCBot;
+const winGame = async (bot, player, map, score = null) => {
+  console.log(!matches.get(map));
+
+  if (!matches.get(map)) {
+    console.log('won')
+    return;
+  }
+
+  matches.set(map, false);
+  await rcon.run(`clear ${player}`);
+  console.log('Won by player? ' + score);
+  await rcon.run(`tp ${player} 0 174 0`);
+
+  setTimeout(async () => {
+    await rcon.run(`clear ${bot.username}`);
+    await bot.quit();
+    await rcon.run(`title ${player} title {"text":"${score ? "You Won!" : "You Lost!"}","color":"red"}`);
+  }, 500);
+
+  /* Reset map */
+  setTimeout(async () => {
+    await resetMap(map);
+  }, 1000);
+
+  if (score) {
+    /* Add score */
+    const id = await db.insert(player, score);
+    console.log(id);
+  }
+}
+
+const resetMap = async map => {
+  await rcon.run(`/schem load ${map}`);
+  await rcon.run(`/world world`);
+  setTimeout(async () => {
+    await rcon.run(`/paste -o`);
+  }, 500)
+}
+
+module.exports = { MCBot, matches };
