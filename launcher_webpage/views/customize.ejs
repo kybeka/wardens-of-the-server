@@ -1,23 +1,31 @@
-<form method="POST" action="http://localhost:9000/play">
-    <div class="form-item">
-        <label for="map">Choose your terrain:</label>
-        <select name="map" id="map" required>
-            <option disabled selected>Choose</option>
-            <option value="nyc">New York</option>
-            <option value="santorini">Santorini</option>
-            <option value="tokyo">Tokyo</option>
-            <option value="neom">Neom</option>
-        </select>
-    </div>
-    <div class="form-item">
-        <label for="level">Choose the difficulty:</label>
-        <select name="level" id="level">
-            <option value="easy" selected>Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
-        </select>
-    </div>
+<form id="customize-form" method="POST" action="http://localhost:9000/play">
 
-    <input type="text" name="player" id="player" placeholder="Minecraft username">
-    <input id="start-button" type="submit" value="Launch Minecraft!">
+        <div class="row">
+            <div class="column">
+                <label for="map">Choose your terrain:</label>
+            </div>
+
+
+            <div class="column form-item">
+                <select name="map" id="map" required>
+                    <option disabled selected>Choose</option>
+                    <option value="nyc">New York</option>
+                    <option value="santorini">Santorini</option>
+                    <option value="tokyo">Tokyo</option>
+                    <option value="neom">Neom</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <input type="text" name="player" id="player" placeholder="Minecraft username">
+            </div>
+
+            <div class="column">
+                <input id="start-button" type="submit" value="Launch Minecraft!">
+            </div>
+
+        </div>
 </form>
+

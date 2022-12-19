@@ -1,4 +1,4 @@
-//EJS Compiled Views - This file was automatically generated on Sun Dec 18 2022 22:25:02 GMT+0100 (Central European Standard Time)
+//EJS Compiled Views - This file was automatically generated on Mon Dec 19 2022 14:13:42 GMT+0100 (Central European Standard Time)
 ejs.views_include = function(locals) {
     console.log("views_include_setup",locals);
     return function(path, d) {
@@ -50,14 +50,14 @@ function encode_char(c) {
 };
 ;
 var __line = 1
-  , __lines = "<form method=\"POST\" action=\"http://localhost:9000/play\">\n    <div class=\"form-item\">\n        <label for=\"map\">Choose your terrain:</label>\n        <select name=\"map\" id=\"map\" required>\n            <option disabled selected>Choose</option>\n            <option value=\"nyc\">New York</option>\n            <option value=\"santorini\">Santorini</option>\n            <option value=\"tokyo\">Tokyo</option>\n            <option value=\"neom\">Neom</option>\n        </select>\n    </div>\n    <div class=\"form-item\">\n        <label for=\"level\">Choose the difficulty:</label>\n        <select name=\"level\" id=\"level\">\n            <option value=\"easy\" selected>Easy</option>\n            <option value=\"medium\">Medium</option>\n            <option value=\"hard\">Hard</option>\n        </select>\n    </div>\n\n    <input type=\"text\" name=\"player\" id=\"player\" placeholder=\"Minecraft username\">\n    <input id=\"start-button\" type=\"submit\" value=\"Launch Minecraft!\">\n</form>"
+  , __lines = "<form id=\"customize-form\" method=\"POST\" action=\"http://localhost:9000/play\">\n\n        <div class=\"row\">\n            <div class=\"column\">\n                <label for=\"map\">Choose your terrain:</label>\n            </div>\n\n\n            <div class=\"column form-item\">\n                <select name=\"map\" id=\"map\" required>\n                    <option disabled selected>Choose</option>\n                    <option value=\"nyc\">New York</option>\n                    <option value=\"santorini\">Santorini</option>\n                    <option value=\"tokyo\">Tokyo</option>\n                    <option value=\"neom\">Neom</option>\n                </select>\n            </div>\n        </div>\n\n        <div class=\"row\">\n            <div class=\"column\">\n                <input type=\"text\" name=\"player\" id=\"player\" placeholder=\"Minecraft username\">\n            </div>\n\n            <div class=\"column\">\n                <input id=\"start-button\" type=\"submit\" value=\"Launch Minecraft!\">\n            </div>\n\n        </div>\n</form>\n\n"
   , __filename = undefined;
 try {
   var __output = "";
   function __append(s) { if (s !== undefined && s !== null) __output += s }
   with (locals || {}) {
-    ; __append("<form method=\"POST\" action=\"http://localhost:9000/play\">\n    <div class=\"form-item\">\n        <label for=\"map\">Choose your terrain:</label>\n        <select name=\"map\" id=\"map\" required>\n            <option disabled selected>Choose</option>\n            <option value=\"nyc\">New York</option>\n            <option value=\"santorini\">Santorini</option>\n            <option value=\"tokyo\">Tokyo</option>\n            <option value=\"neom\">Neom</option>\n        </select>\n    </div>\n    <div class=\"form-item\">\n        <label for=\"level\">Choose the difficulty:</label>\n        <select name=\"level\" id=\"level\">\n            <option value=\"easy\" selected>Easy</option>\n            <option value=\"medium\">Medium</option>\n            <option value=\"hard\">Hard</option>\n        </select>\n    </div>\n\n    <input type=\"text\" name=\"player\" id=\"player\" placeholder=\"Minecraft username\">\n    <input id=\"start-button\" type=\"submit\" value=\"Launch Minecraft!\">\n</form>")
-    ; __line = 23
+    ; __append("<form id=\"customize-form\" method=\"POST\" action=\"http://localhost:9000/play\">\n\n        <div class=\"row\">\n            <div class=\"column\">\n                <label for=\"map\">Choose your terrain:</label>\n            </div>\n\n\n            <div class=\"column form-item\">\n                <select name=\"map\" id=\"map\" required>\n                    <option disabled selected>Choose</option>\n                    <option value=\"nyc\">New York</option>\n                    <option value=\"santorini\">Santorini</option>\n                    <option value=\"tokyo\">Tokyo</option>\n                    <option value=\"neom\">Neom</option>\n                </select>\n            </div>\n        </div>\n\n        <div class=\"row\">\n            <div class=\"column\">\n                <input type=\"text\" name=\"player\" id=\"player\" placeholder=\"Minecraft username\">\n            </div>\n\n            <div class=\"column\">\n                <input id=\"start-button\" type=\"submit\" value=\"Launch Minecraft!\">\n            </div>\n\n        </div>\n</form>\n\n")
+    ; __line = 32
   }
   return __output;
 } catch (e) {
@@ -110,14 +110,14 @@ function encode_char(c) {
 };
 ;
 var __line = 1
-  , __lines = "<article>\n    <h2>Welcome to Build & Cross!</h2>\n    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A deleniti ipsa nemo enim optio, dolore dolor omnis minus incidunt quas doloremque eum esse velit? Expedita blanditiis sit labore voluptate quasi.</p>\n</article>\n\n<br />\n\n<div class=\"img-descr\">\n    <h4 class=\"img-txt\"> Minecraft:</h4>\n    <img src=\"img/minecraft-img.jpg\" alt=\"Minecraft\" height=\"400\" width=\"400\" />\n</div>"
+  , __lines = "<article>\n    <h2>Welcome to Build & Cross!</h2>\n    <p>During this game, you, the player, are spawned onto a map in Minecraft\n        equiped with a railway that is hovewer, broken. There are resources placed throughout the world,\n        which will help you build missing rails.\n        Your mission is to place rails where they're missing and help the minecart that uses the railway pass.\n    </p>\n</article>\n\n<br />\n\n<div class=\"row\">\n    <div class=\"column\">\n\n        <div class=\"img-descr\">\n            <h4 class=\"img-txt\"> Tokyo:</h4>\n            <img src=\"img/tokyo.jpeg\" alt=\"Tokyo\" height=\"400\" width=\"400\" />\n        </div>\n\n    </div>\n    <div class=\"column\">\n\n        <div class=\"img-descr\">\n            <h4 class=\"img-txt\"> Neom:</h4>\n            <img src=\"img/neom.jpeg\" alt=\"Neom\" height=\"400\" width=\"400\" />\n        </div>\n\n    </div>\n</div>\n\n<div class=\"row\">\n    <div class=\"column\">\n\n        <div class=\"img-descr\">\n            <h4 class=\"img-txt\"> Santorini:</h4>\n            <img src=\"img/santorini.jpeg\" alt=\"Santorini\" height=\"400\" width=\"400\" />\n        </div>\n\n    </div>\n    <div class=\"column\">\n\n        <div class=\"img-descr\">\n            <h4 class=\"img-txt\"> New York City:</h4>\n            <img src=\"img/nyc.jpeg\" alt=\"New York City\" height=\"400\" width=\"400\" />\n        </div>\n\n    </div>\n</div>"
   , __filename = undefined;
 try {
   var __output = "";
   function __append(s) { if (s !== undefined && s !== null) __output += s }
   with (locals || {}) {
-    ; __append("<article>\n    <h2>Welcome to Build & Cross!</h2>\n    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A deleniti ipsa nemo enim optio, dolore dolor omnis minus incidunt quas doloremque eum esse velit? Expedita blanditiis sit labore voluptate quasi.</p>\n</article>\n\n<br />\n\n<div class=\"img-descr\">\n    <h4 class=\"img-txt\"> Minecraft:</h4>\n    <img src=\"img/minecraft-img.jpg\" alt=\"Minecraft\" height=\"400\" width=\"400\" />\n</div>")
-    ; __line = 11
+    ; __append("<article>\n    <h2>Welcome to Build & Cross!</h2>\n    <p>During this game, you, the player, are spawned onto a map in Minecraft\n        equiped with a railway that is hovewer, broken. There are resources placed throughout the world,\n        which will help you build missing rails.\n        Your mission is to place rails where they're missing and help the minecart that uses the railway pass.\n    </p>\n</article>\n\n<br />\n\n<div class=\"row\">\n    <div class=\"column\">\n\n        <div class=\"img-descr\">\n            <h4 class=\"img-txt\"> Tokyo:</h4>\n            <img src=\"img/tokyo.jpeg\" alt=\"Tokyo\" height=\"400\" width=\"400\" />\n        </div>\n\n    </div>\n    <div class=\"column\">\n\n        <div class=\"img-descr\">\n            <h4 class=\"img-txt\"> Neom:</h4>\n            <img src=\"img/neom.jpeg\" alt=\"Neom\" height=\"400\" width=\"400\" />\n        </div>\n\n    </div>\n</div>\n\n<div class=\"row\">\n    <div class=\"column\">\n\n        <div class=\"img-descr\">\n            <h4 class=\"img-txt\"> Santorini:</h4>\n            <img src=\"img/santorini.jpeg\" alt=\"Santorini\" height=\"400\" width=\"400\" />\n        </div>\n\n    </div>\n    <div class=\"column\">\n\n        <div class=\"img-descr\">\n            <h4 class=\"img-txt\"> New York City:</h4>\n            <img src=\"img/nyc.jpeg\" alt=\"New York City\" height=\"400\" width=\"400\" />\n        </div>\n\n    </div>\n</div>")
+    ; __line = 48
   }
   return __output;
 } catch (e) {
@@ -170,13 +170,13 @@ function encode_char(c) {
 };
 ;
 var __line = 1
-  , __lines = "<h4>Top 10 Players</h4>\n<table>\n  <tr>\n    <td>Player</td>\n    <td>Score</td>\n    <td>Map\n    <td>\n  </tr>\n  <% for (let s of scores) { %>\n    <tr>\n      <td>\n        <%= s.player %>\n      </td>\n      <td>\n        <%= s.score %>\n      </td>\n      <td>\n        <%= s.map %>\n      </td>\n    </tr>\n    <% } %>\n</table>"
+  , __lines = "<h4 class=\"titles\">Top 10 Players</h4>\n<table>\n  <tr>\n    <td class=\"titles\">Player</td>\n    <td class=\"titles\">Score</td>\n    <td class=\"titles\">Map\n    <td>\n  </tr>\n  <% for (let s of scores) { %>\n    <tr>\n      <td>\n        <%= s.player %>\n      </td>\n      <td>\n        <%= s.score %>\n      </td>\n      <td>\n        <%= s.map %>\n      </td>\n    </tr>\n    <% } %>\n</table>"
   , __filename = undefined;
 try {
   var __output = "";
   function __append(s) { if (s !== undefined && s !== null) __output += s }
   with (locals || {}) {
-    ; __append("<h4>Top 10 Players</h4>\n<table>\n  <tr>\n    <td>Player</td>\n    <td>Score</td>\n    <td>Map\n    <td>\n  </tr>\n  ")
+    ; __append("<h4 class=\"titles\">Top 10 Players</h4>\n<table>\n  <tr>\n    <td class=\"titles\">Player</td>\n    <td class=\"titles\">Score</td>\n    <td class=\"titles\">Map\n    <td>\n  </tr>\n  ")
     ; __line = 9
     ;  for (let s of scores) { 
     ; __append("\n    <tr>\n      <td>\n        ")
