@@ -463,7 +463,7 @@ const winGame = async (bot, player, map, score = null) => {
 
   if (score) {
     /* Add score */
-    const id = await db.insert(player, score);
+    const id = await db.insert(player, score, map);
     console.log(id);
   }
 }

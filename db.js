@@ -20,11 +20,12 @@ const pool = mysql.createPool({
  * 
  * @param  {String} player the name of the player.
  * @param  {Number} score  the score fo the player.
+ * @param  {String} map    the map the game was played in.
  * @return {Number}        id of inserted score.  
  */
-const insert = async (player, score) => {
+const insert = async (player, score, map) => {
   try {
-    const [results] = await pool.promise().query(`INSERT INTO scores (player, score) VALUES (?, ?);`, [player, score]);
+    const [results] = await pool.promise().query(`INSERT INTO scores (player, score, map) VALUES (?, ?, ?);`, [player, score, map]);
     return results.insertId;
   } catch (err) {
     throw err;
