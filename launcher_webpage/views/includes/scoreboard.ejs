@@ -1,17 +1,22 @@
 <h4>Top 10 Players</h4>
 <table>
   <tr>
-    <th>Player</th>
-    <th>Score</th>
+    <td>Player</td>
+    <td>Score</td>
+    <td>Map
+    <td>
   </tr>
   <% for (let s of scores) { %>
     <tr>
       <td>
         <%= s.player %>
-          </th>
+      </td>
       <td>
         <%= s.score %>
-          </th>
+      </td>
+      <td>
+        <%= s.map %>
+      </td>
     </tr>
     <% } %>
 </table>

@@ -207,7 +207,7 @@ class MCBot {
       if (!bench) {
         /* Not in inventory, craft bench */
         console.log('bench not found, crafting one!');
-        await craftItem(this.bot, 'crafting_table');
+        await this.craftItem(this.bot, 'crafting_table');
         await this.bot.waitForTicks(10);
       }
 

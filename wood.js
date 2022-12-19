@@ -1,3 +1,9 @@
+/**
+ * Testing tree bot implementation archived
+ * @author Sara Liberi
+ */
+
+
 const mineflayer = require('mineflayer');
 //const { Block } = require('prismarine-block');
 const pathfinder = require('mineflayer-pathfinder').pathfinder

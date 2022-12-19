@@ -1,4 +1,4 @@
-//EJS Compiled Views - This file was automatically generated on Sun Dec 18 2022 14:04:16 GMT+0100 (Central European Standard Time)
+//EJS Compiled Views - This file was automatically generated on Mon Dec 19 2022 11:39:59 GMT+0100 (Central European Standard Time)
 ejs.views_include = function(locals) {
     console.log("views_include_setup",locals);
     return function(path, d) {
@@ -170,26 +170,29 @@ function encode_char(c) {
 };
 ;
 var __line = 1
-  , __lines = "<h4>Top 10 Players</h4>\n<table>\n  <tr>\n    <th>Player</th>\n    <th>Score</th>\n  </tr>\n  <% for (let s of scores) { %>\n    <tr>\n      <td>\n        <%= s.player %>\n          </th>\n      <td>\n        <%= s.score %>\n          </th>\n    </tr>\n    <% } %>\n</table>"
+  , __lines = "<h4>Top 10 Players</h4>\n<table>\n  <tr>\n    <td>Player</td>\n    <td>Score</td>\n    <td>Map\n    <td>\n  </tr>\n  <% for (let s of scores) { %>\n    <tr>\n      <td>\n        <%= s.player %>\n      </td>\n      <td>\n        <%= s.score %>\n      </td>\n      <td>\n        <%= s.map %>\n      </td>\n    </tr>\n    <% } %>\n</table>"
   , __filename = undefined;
 try {
   var __output = "";
   function __append(s) { if (s !== undefined && s !== null) __output += s }
   with (locals || {}) {
-    ; __append("<h4>Top 10 Players</h4>\n<table>\n  <tr>\n    <th>Player</th>\n    <th>Score</th>\n  </tr>\n  ")
-    ; __line = 7
+    ; __append("<h4>Top 10 Players</h4>\n<table>\n  <tr>\n    <td>Player</td>\n    <td>Score</td>\n    <td>Map\n    <td>\n  </tr>\n  ")
+    ; __line = 9
     ;  for (let s of scores) { 
     ; __append("\n    <tr>\n      <td>\n        ")
-    ; __line = 10
+    ; __line = 12
     ; __append(escapeFn( s.player ))
-    ; __append("\n          </th>\n      <td>\n        ")
-    ; __line = 13
+    ; __append("\n      </td>\n      <td>\n        ")
+    ; __line = 15
     ; __append(escapeFn( s.score ))
-    ; __append("\n          </th>\n    </tr>\n    ")
-    ; __line = 16
+    ; __append("\n      </td>\n      <td>\n        ")
+    ; __line = 18
+    ; __append(escapeFn( s.map ))
+    ; __append("\n      </td>\n    </tr>\n    ")
+    ; __line = 21
     ;  } 
     ; __append("\n</table>")
-    ; __line = 17
+    ; __line = 22
   }
   return __output;
 } catch (e) {

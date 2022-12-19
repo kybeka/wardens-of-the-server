@@ -21,6 +21,7 @@ app.post('/play', async (req, res) => {
   /* Player is online */
   /* Check if map is available */
   if (matches.get(map)) {
+    console.log('map already in use');
     return res.send({ message: 'map already in use' });
   }
   /* Flag map as in use */
@@ -30,6 +31,7 @@ app.post('/play', async (req, res) => {
   return res.send({ message: 'game started' });
 });
 
+
 const startGame = async (player, map) => {
   /* Create new bot */
   const bot = new MCBot(map, player, maps[map]);
@@ -37,6 +39,7 @@ const startGame = async (player, map) => {
   await rcon.run(`title ${player} title {"text":"Game starts!","color":"red"}`);
   setTimeout(async () => {
     /* Teleport bot and player to plot */
+    await rcon.run(`clear ${bot.name}`)
     await bot.tp();
     await rcon.run(`tp ${player} ${maps[map].spawn.player.x} ${maps[map].spawn.player.y} ${maps[map].spawn.player.z}`);
   }, 1000);

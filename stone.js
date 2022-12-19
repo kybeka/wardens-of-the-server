@@ -1,4 +1,5 @@
 /**
+ * Testing stone bot implementation archived
  * collect stone (if wooden pickaxe breaks create a stone one)
  * find iron ore (6 ore)
  * @author Sapana Tamang
