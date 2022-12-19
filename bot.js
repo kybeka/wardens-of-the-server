@@ -85,7 +85,6 @@ class MCBot {
    * Add rail placed listener.
    */
   addGameOverListener(missingBlock) {
-    console.log('plaed')
     this.bot.world.on('blockUpdate', (oldBlock, newBlock) => {
       if (newBlock.position.x == missingBlock.position.x
         && newBlock.position.y == missingBlock.position.y
@@ -112,11 +111,11 @@ class MCBot {
     this.addGameOverListener(missingBlock);
 
     /* 1. Collect wood */
-    await this.mineNode('oak_log', 4);
+    await this.mineNode('oak_log', 5);
 
     // /* 2. Make wooden pickaxe */
     await this.craftItem('oak_planks', 4);
-    await this.craftItem('stick', 1);
+    await this.craftItem('stick', 2);
     let bench = await this.getCraftingTable();
     await this.craftItem('wooden_pickaxe', 1, bench);
 
@@ -135,14 +134,17 @@ class MCBot {
     const furnace = await this.bot.openFurnace(furnaceBlock);
     await furnace.putFuel(720, null, 4);
     await furnace.putInput(727, null, 6);
-
+    
     /* Wait for furnace */
     await this.bot.waitForTicks(6.3 * 200)
     await furnace.takeOutput();
-
-    bench = await this.getCraftingTable(this.bot);
+    await this.bot.waitForTicks(10);
+    furnace.close();
+    
+    bench = await this.getCraftingTable();
     await this.craftItem('rail', 1, bench);
-    await this.replaceRail(missingBlock.position);
+    await this.bot.waitForTicks(15);
+    await this.replaceRail(missingBlock.position);    
   }
 
   /**
@@ -319,7 +321,7 @@ class MCBot {
         matching: b.id,
         maxDistance: 64,
         useExtraInfo: block => {
-          if (block.position.y < 173) return false;
+          // if (block.position.y < 167) return false;
           if (this.bot.canSeeBlock(block)) return true;
         }
       });
@@ -328,7 +330,12 @@ class MCBot {
       if (!block) {
         block = this.bot.findBlock({
           matching: b.id,
-          maxDistance: 64
+          maxDistance: 64,
+          useExtraInfo: block => {
+            // if (block.position.y > 178 || block.position.y < 167) return false;
+            // if (block.position.x < this.map.center.x) return false;
+            return true;
+          }
         });
       }
 
@@ -375,7 +382,7 @@ class MCBot {
     /* Find all 100 rails in 50 block radius */
     const rails = this.bot.findBlocks({
       matching: mcData.blocksByName['rail'].id,
-      maxDistance: 300,
+      maxDistance: 100,
       count: 100
     });
     if (!rails) return;
