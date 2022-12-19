@@ -1,4 +1,3 @@
-
 api = function () {
   const getTopScores = async () => {
     const res = await fetch('/api/highscores');
