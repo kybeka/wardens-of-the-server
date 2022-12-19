@@ -73,12 +73,12 @@ class MCBot {
       console.log(`[${this.bot.username}] spawned.`);
       const movements = new Movements(this.bot);
       movements.digCost = 10;
-      // movements.placeCost = 10;
+      movements.blocksToAvoid.add(416);
       this.bot.pathfinder.setMovements(movements);
       this.startTime = this.bot.time.age;
       inventoryViewer(this.bot);
     });
-    
+
   }
 
   /**
@@ -91,7 +91,7 @@ class MCBot {
         && newBlock.position.z == missingBlock.position.z) {
         /* Check if rail */
         if (newBlock.name == 'rail') {
-        setTimeout(async () => {
+          setTimeout(async () => {
             const score = (this.bot.time.age - this.startTime) / 20;
             winGame(this.bot, this.player, this.map.name, score);
           }, 1000);
@@ -115,7 +115,7 @@ class MCBot {
 
     // /* 2. Make wooden pickaxe */
     await this.craftItem('oak_planks', 4);
-    await this.craftItem('stick', 2);
+    await this.craftItem('stick', 3);
     let bench = await this.getCraftingTable();
     await this.craftItem('wooden_pickaxe', 1, bench);
 
@@ -134,17 +134,18 @@ class MCBot {
     const furnace = await this.bot.openFurnace(furnaceBlock);
     await furnace.putFuel(720, null, 4);
     await furnace.putInput(727, null, 6);
-    
+
     /* Wait for furnace */
     await this.bot.waitForTicks(6.3 * 200)
     await furnace.takeOutput();
     await this.bot.waitForTicks(10);
     furnace.close();
-    
+
     bench = await this.getCraftingTable();
+    await this.bot.waitForTicks(15);
     await this.craftItem('rail', 1, bench);
     await this.bot.waitForTicks(15);
-    await this.replaceRail(missingBlock.position);    
+    await this.replaceRail(missingBlock.position);
   }
 
   /**
@@ -187,6 +188,8 @@ class MCBot {
     } catch (err) {
       console.log('Error crafting ' + itemName);
       console.log(err)
+      // let goal = new GoalPlaceBlock(bPos + vec3(0, 1, 0), this.bot.world, {});
+      // await this.bot.pathfinder.goto(goal);
     }
   }
 
@@ -209,14 +212,14 @@ class MCBot {
       if (!bench) {
         /* Not in inventory, craft bench */
         console.log('bench not found, crafting one!');
-        await this.craftItem(this.bot, 'crafting_table');
+        await this.craftItem('crafting_table');
         await this.bot.waitForTicks(10);
       }
 
       /* Randomly chose a nearby spot to place the bench */
       const bPos = this.bot.findBlocks({
-        matching: 8,
-        maxDistance: 15,
+        matching: [1, 8, 9],
+        maxDistance: 4,
         count: 10,
         useExtraInfo: block => {
           /* On top of the block there must be nothing */
@@ -265,15 +268,15 @@ class MCBot {
       if (!furnace) {
         /* Not in inventory, craft furnace */
         console.log('furnace not found, crafting one!');
-        let bench = await this.getCraftingTable(this.bot);
-        await craftItem(this.bot, 'furnace', 1, bench);
+        let bench = await this.getCraftingTable();
+        await this.craftItem('furnace', 1, bench);
         await this.bot.waitForTicks(10);
       }
 
       /* Randomly chose a nearby spot to place the furnace */
       const bPos = this.bot.findBlocks({
-        matching: 8,
-        maxDistance: 15,
+        matching: [1, 8, 9],
+        maxDistance: 4,
         count: 10,
         useExtraInfo: block => {
           /* On top of the block there must be nothing */
@@ -319,9 +322,9 @@ class MCBot {
       /* Prefer resources that are in sight of the bot */
       let block = this.bot.findBlock({
         matching: b.id,
-        maxDistance: 64,
+        maxDistance: 7,
         useExtraInfo: block => {
-          // if (block.position.y < 167) return false;
+          if (block.position.y > 177 || block.position.y < 167) return false;
           if (this.bot.canSeeBlock(block)) return true;
         }
       });
@@ -330,9 +333,9 @@ class MCBot {
       if (!block) {
         block = this.bot.findBlock({
           matching: b.id,
-          maxDistance: 64,
+          maxDistance: 20,
           useExtraInfo: block => {
-            // if (block.position.y > 178 || block.position.y < 167) return false;
+            if (block.position.y > 177 || block.position.y < 163) return false;
             // if (block.position.x < this.map.center.x) return false;
             return true;
           }
@@ -449,8 +452,6 @@ class MCBot {
  * @param {Number} score  the score of the player. Null if bot won.
  */
 const winGame = async (bot, player, map, score = null) => {
-  console.log(!matches.get(map));
-
   if (!matches.get(map)) return;
   matches.set(map, false);
 
